@@ -9,6 +9,10 @@ app.use(express.static('src'))
 // Create application/x-www-form-urlencoded parser
 let urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+//app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.json());
+let jsonParser = bodyParser.json();
+
 // Create index route
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/src/index.html'));
@@ -84,7 +88,7 @@ app.get('/addpost2', (req, res) => {
 // Select posts
 app.get('/getposts', (req, res) => {
     let sql = 'SELECT * FROM posts';
-  let query = db.query(sql, (err, results) => {
+    let query = db.query(sql, (err, results) => {
     if(err) throw err;
     console.log(results);
     res.send('Posts fetched...')
@@ -122,7 +126,7 @@ app.get('/deletepost/:id', (req, res) => {
   });
 });
 
-// Post request
+// Post request - holo
 app.post('/submit', urlencodedParser, (req, res) => {
   console.log(req.body);
   let update = req.body;
@@ -131,6 +135,28 @@ app.post('/submit', urlencodedParser, (req, res) => {
     if(err) throw err;
     console.log(result);
     res.send('Database Updated')
+  });
+});
+
+// Get request - holo
+app.get('/getholodata/:id', (req, res) => {
+    let sql = `SELECT * FROM holo WHERE id = ${req.params.id}`;
+    let query = db.query(sql, (err, results) => {
+    if(err) throw err;
+    console.log(results);
+    console.log(JSON.stringify(results, null, 2));
+    //res.send(results);
+    res.send(JSON.stringify(results, null, 2));
+  });
+});
+
+// Get all holo data
+app.get('/getholodata/', (req, res) => {
+  let sql = 'SELECT * FROM holo';
+  let query = db.query(sql, (err, results) => {
+  if(err) throw err;
+  console.log(results);
+  res.send(JSON.stringify(results, null, 2));
   });
 });
 
