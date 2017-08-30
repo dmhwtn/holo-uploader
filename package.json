@@ -1,0 +1,26 @@
+{
+  "name": "holo-uploader",
+  "version": "1.0.0-alpha",
+  "description": "HoloLens Uploader App",
+  "main": "app.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "author": "Dominic Hawton",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "bootstrap": "4.0.0-beta",
+    "express": "^4.15.4",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "mysql": "^2.14.1",
+    "popper.js": "^1.12.3",
+    "sql": "^0.78.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0"
+  }
+}

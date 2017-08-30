@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HoloLens Uploader</title>
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="row justify-content-md-center">
+    <div class="card my-5 text-center px-5 py-3 pb-5">
+      <h1 class="card-title py-3">HoloLens Uploader</h1>
+      <p class="card-body">Version 1.0-alpha</p>
+      <div class="container">
+
+        <form id="update-form" method="POST" action="/submit">
+          <div class="form-group col-md-auto" action="index.html" method="post">
+            <label for="nameInput">Project</label>
+            <input class="form-control" type="text" name="name" palceholder="Enter project name">
+          </div>
+          <div class="form-group col-md-auto" action="index.html" method="post">
+            <div class="form-group col-md-auto pt-4">
+              <label class="btn btn-secondary" >Choose mesh
+                <input type="file" hidden>
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-auto" action="index.html" method="post">
+            <label for="dateInput">Date</label>
+            <input class="form-control" type="text" name="date" palceholder="Enter date">
+          </div>
+          <div class="form-group col-md-auto" action="index.html" method="post">
+            <label for="nameInput">Author</label>
+            <input class="form-control" type="text" name="author" palceholder="Enter author">
+          </div>
+          <div class="form-group col-md-auto" action="index.html" method="post">
+            <label for="nameInput">Comments</label>
+            <!--
+            <input class="form-control" type="text" name="comments" palceholder="Enter comments">
+            -->
+            <textarea class="form-control" name="comments" rows="4" cols="80"></textarea>
+          </div>
+          <button class="btn btn-primary btn-lg my-3" type="submit" value="Submit">Submit</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
