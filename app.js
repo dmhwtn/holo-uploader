@@ -1,10 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
+
 const mysql = require('mysql');
 const path = require('path');
 
+// Initialise app
 const app = express();
+
+
 app.use(express.static('src'))
+app.use(fileUpload());
 
 // Create application/x-www-form-urlencoded parser
 let urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -136,6 +142,19 @@ app.post('/submit', urlencodedParser, (req, res) => {
     console.log(result);
     res.send('Database Updated')
   });
+
+  // Mesh upload
+  if(!req.files)
+    return console.log("No files found.");
+
+  // Get model mesh
+  let modelMesh = req.files.file;
+
+  // Move to uploads folder
+  modelMesh.mv('src/uploads/currentmesh.obj', (error) => {
+    if (error) return console.log(error);
+    console.log('File uploaded!');
+  });
 });
 
 // Get request - holo
@@ -158,6 +177,12 @@ app.get('/getholodata/', (req, res) => {
   console.log(results);
   res.send(JSON.stringify(results, null, 2));
   });
+});
+
+// Get .obj file
+app.get('/downloadmesh', (req, res) => {
+  let file = __dirname + "/src/uploads/currentmesh.obj";
+  res.download(file);
 });
 
 app.listen(process.env.PORT || 3000, () => {

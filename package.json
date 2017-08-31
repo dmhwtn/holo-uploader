@@ -12,6 +12,7 @@
     "body-parser": "^1.17.2",
     "bootstrap": "4.0.0-beta",
     "express": "^4.15.4",
+    "express-fileupload": "^0.2.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "mysql": "^2.14.1",
